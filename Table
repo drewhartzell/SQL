@@ -1,11 +1,34 @@
 # Etsy #
 
+# DROP Logic #
+
 DROP DATABASE IF EXISTS `sql_invoicing`;
 CREATE DATABASE `sql_invoicing`; 
 USE `sql_invoicing`;
+//
+//
 
-SET NAMES utf8 ;
-SET character_set_client = utf8mb4 ;
+DROP DATABASE IF EXISTS `sql_store`;
+CREATE DATABASE `sql_store`;
+USE `sql_store`;
+
+//
+//
+
+DROP DATABASE IF EXISTS `sql_hr`;
+CREATE DATABASE `sql_hr`;
+USE `sql_hr`;
+
+//
+//
+
+DROP DATABASE IF EXISTS `sql_inventory`;
+CREATE DATABASE `sql_inventory`;
+USE `sql_inventory`;
+
+--------------------------------------------------------------------------------------------------------------
+
+# CREATE Logic #
 
 CREATE TABLE `payment_methods` (
   `payment_method_id` tinyint(4) NOT NULL AUTO_INCREMENT,
@@ -16,6 +39,11 @@ INSERT INTO `payment_methods` VALUES (1,'Credit Card');
 INSERT INTO `payment_methods` VALUES (2,'Cash');
 INSERT INTO `payment_methods` VALUES (3,'PayPal');
 INSERT INTO `payment_methods` VALUES (4,'Wire Transfer');
+SET NAMES utf8 ;
+SET character_set_client = utf8mb4 ;
+
+//
+//
 
 CREATE TABLE `clients` (
   `client_id` int(11) NOT NULL,
@@ -26,11 +54,9 @@ CREATE TABLE `clients` (
   `phone` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`client_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO `clients` VALUES (1,'Vinte','3 Nevada Parkway','Syracuse','NY','315-252-7305');
-INSERT INTO `clients` VALUES (2,'Myworks','34267 Glendale Parkway','Huntington','WV','304-659-1170');
-INSERT INTO `clients` VALUES (3,'Yadel','096 Pawling Parkway','San Francisco','CA','415-144-6037');
-INSERT INTO `clients` VALUES (4,'Kwideo','81674 Westerfield Circle','Waco','TX','254-750-0784');
-INSERT INTO `clients` VALUES (5,'Topiclounge','0863 Farmco Road','Portland','OR','971-888-9129');
+
+//
+//
 
 CREATE TABLE `invoices` (
   `invoice_id` int(11) NOT NULL,
@@ -63,6 +89,9 @@ INSERT INTO `invoices` VALUES (17,'33-615-4694',3,126.38,68.10,'2019-07-30','201
 INSERT INTO `invoices` VALUES (18,'52-269-9803',5,180.17,42.77,'2019-05-23','2019-06-12','2019-01-08');
 INSERT INTO `invoices` VALUES (19,'83-559-4105',1,134.47,0.00,'2019-11-23','2019-12-13',NULL);
 
+//
+//
+
 CREATE TABLE `payments` (
   `payment_id` int(11) NOT NULL AUTO_INCREMENT,
   `client_id` int(11) NOT NULL,
@@ -87,10 +116,8 @@ INSERT INTO `payments` VALUES (6,3,17,'2019-01-15',68.10,1);
 INSERT INTO `payments` VALUES (7,5,18,'2019-01-08',32.77,1);
 INSERT INTO `payments` VALUES (8,5,18,'2019-01-08',10.00,2);
 
-
-DROP DATABASE IF EXISTS `sql_store`;
-CREATE DATABASE `sql_store`;
-USE `sql_store`;
+//
+//
 
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -110,6 +137,8 @@ INSERT INTO `products` VALUES (8,'Island Oasis - Raspberry',26,0.74);
 INSERT INTO `products` VALUES (9,'Longan',67,2.26);
 INSERT INTO `products` VALUES (10,'Broom - Push',6,1.09);
 
+//
+//
 
 CREATE TABLE `shippers` (
   `shipper_id` smallint(6) NOT NULL AUTO_INCREMENT,
@@ -122,6 +151,8 @@ INSERT INTO `shippers` VALUES (3,'Satterfield LLC');
 INSERT INTO `shippers` VALUES (4,'Mraz, Renner and Nolan');
 INSERT INTO `shippers` VALUES (5,'Waters, Mayert and Prohaska');
 
+//
+//
 
 CREATE TABLE `customers` (
   `customer_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -135,17 +166,9 @@ CREATE TABLE `customers` (
   `points` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`customer_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-INSERT INTO `customers` VALUES (1,'Babara','MacCaffrey','1986-03-28','781-932-9754','0 Sage Terrace','Waltham','MA',2273);
-INSERT INTO `customers` VALUES (2,'Ines','Brushfield','1986-04-13','804-427-9456','14187 Commercial Trail','Hampton','VA',947);
-INSERT INTO `customers` VALUES (3,'Freddi','Boagey','1985-02-07','719-724-7869','251 Springs Junction','Colorado Springs','CO',2967);
-INSERT INTO `customers` VALUES (4,'Ambur','Roseburgh','1974-04-14','407-231-8017','30 Arapahoe Terrace','Orlando','FL',457);
-INSERT INTO `customers` VALUES (5,'Clemmie','Betchley','1973-11-07',NULL,'5 Spohn Circle','Arlington','TX',3675);
-INSERT INTO `customers` VALUES (6,'Elka','Twiddell','1991-09-04','312-480-8498','7 Manley Drive','Chicago','IL',3073);
-INSERT INTO `customers` VALUES (7,'Ilene','Dowson','1964-08-30','615-641-4759','50 Lillian Crossing','Nashville','TN',1672);
-INSERT INTO `customers` VALUES (8,'Thacher','Naseby','1993-07-17','941-527-3977','538 Mosinee Center','Sarasota','FL',205);
-INSERT INTO `customers` VALUES (9,'Romola','Rumgay','1992-05-23','559-181-3744','3520 Ohio Trail','Visalia','CA',1486);
-INSERT INTO `customers` VALUES (10,'Levy','Mynett','1969-10-13','404-246-3370','68 Lawn Avenue','Atlanta','GA',796);
 
+//
+//
 
 CREATE TABLE `order_statuses` (
   `order_status_id` tinyint(4) NOT NULL,
@@ -184,6 +207,8 @@ INSERT INTO `orders` VALUES (8,5,'2018-06-08',1,'Mauris enim leo, rhoncus sed, v
 INSERT INTO `orders` VALUES (9,10,'2017-07-05',2,'Nulla mollis molestie lorem. Quisque ut erat.','2017-07-06',1);
 INSERT INTO `orders` VALUES (10,6,'2018-04-22',2,NULL,'2018-04-23',2);
 
+//
+//
 
 CREATE TABLE `order_items` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -214,21 +239,20 @@ INSERT INTO `order_items` VALUES (9,6,5,7.28);
 INSERT INTO `order_items` VALUES (10,1,10,6.01);
 INSERT INTO `order_items` VALUES (10,9,9,4.28);
 
+//
+//
+
 CREATE TABLE `sql_store`.`order_item_notes` (
   `note_id` INT NOT NULL,
   `order_Id` INT NOT NULL,
   `product_id` INT NOT NULL,
   `note` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`note_id`));
-
 INSERT INTO `order_item_notes` (`note_id`, `order_Id`, `product_id`, `note`) VALUES ('1', '1', '2', 'first note');
 INSERT INTO `order_item_notes` (`note_id`, `order_Id`, `product_id`, `note`) VALUES ('2', '1', '2', 'second note');
 
-
-DROP DATABASE IF EXISTS `sql_hr`;
-CREATE DATABASE `sql_hr`;
-USE `sql_hr`;
-
+//
+//
 
 CREATE TABLE `offices` (
   `office_id` int(11) NOT NULL,
@@ -248,7 +272,8 @@ INSERT INTO `offices` VALUES (8,'9 Grayhawk Trail','New York City','NY');
 INSERT INTO `offices` VALUES (9,'16862 Westend Hill','Knoxville','TN');
 INSERT INTO `offices` VALUES (10,'4 Bluestem Parkway','Savannah','GA');
 
-
+//
+//
 
 CREATE TABLE `employees` (
   `employee_id` int(11) NOT NULL,
@@ -285,11 +310,8 @@ INSERT INTO `employees` VALUES (96513,'Theresa','Binney','Food Chemist',47354,37
 INSERT INTO `employees` VALUES (98374,'Estrellita','Daleman','Staff Accountant IV',70187,37270,5);
 INSERT INTO `employees` VALUES (115357,'Ivy','Fearey','Structural Engineer',92710,37270,5);
 
-
-DROP DATABASE IF EXISTS `sql_inventory`;
-CREATE DATABASE `sql_inventory`;
-USE `sql_inventory`;
-
+//
+//
 
 CREATE TABLE `products` (
   `product_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -308,3 +330,64 @@ INSERT INTO `products` VALUES (7,'Sweet Pea Sprouts',98,3.29);
 INSERT INTO `products` VALUES (8,'Island Oasis - Raspberry',26,0.74);
 INSERT INTO `products` VALUES (9,'Longan',67,2.26);
 INSERT INTO `products` VALUES (10,'Broom - Push',6,1.09);
+
+---------------------------------------------------------------------------------------------------------------------
+
+# ALTER/MODIFY/SET Logic #
+
+UPDATE orders
+SET  Sale_Date = STR_TO_DATE(Sale_Date, '%m/%d/%Y');
+ALTER TABLE orders
+MODIFY COLUMN Sale_Date DATE;
+ALTER TABLE orders
+MODIFY COLUMN Discount_Amount INT;
+ALTER TABLE orders
+MODIFY COLUMN Shipping_Discount INT;
+ALTER TABLE orders
+MODIFY COLUMN Shipping INT;
+ALTER TABLE orders
+MODIFY COLUMN Sales_Tax INT;
+ALTER TABLE orders
+MODIFY COLUMN Card_Processing_Fees INT;
+ALTER TABLE orders
+MODIFY COLUMN Order_Net INT;
+ALTER TABLE orders
+MODIFY COLUMN Adjusted_Order_Total INT;
+ALTER TABLE orders
+MODIFY COLUMN Adjusted_Card_Processing_Fees INT;
+ALTER TABLE orders
+MODIFY COLUMN Adjusted_Net_Order_Amount INT;
+
+//
+//
+
+ALTER TABLE orders
+ADD COLUMN Sale_Year INT;
+UPDATE orders
+SET  Sale_Year = YEAR(Sale_Date);
+
+//
+//
+
+ALTER TABLE orders
+ADD COLUMN Sale_Month INT;
+UPDATE orders
+SET Sale_Month = MONTH(Sale_Date);
+
+//
+//
+
+ALTER TABLE orders
+ADD COLUMN Sale_Month_Name char(225);
+UPDATE orders
+SET Sale_Month_Name = MONTHNAME(Sale_Date);
+
+//
+//
+
+ALTER TABLE orders
+ADD COLUMN Sale_Day INT;
+UPDATE orders
+SET Sale_Day = DAY(Sale_Date);
+UPDATE orders
+SET Order_Net = ROUND(Order_Net,2);
