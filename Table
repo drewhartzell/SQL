@@ -30,6 +30,51 @@ USE `sql_inventory`;
 
 # CREATE Logic #
 
+CREATE TABLE orders (
+  Sale_Date VARCHAR(255),
+  Order_ID BIGINT,
+  Buyer_User_ID VARCHAR(255),
+  Full_Name VARCHAR(255),
+  First_Name VARCHAR(255),
+  Last_Name VARCHAR(255),
+  Number_of_Items INT,
+  Payment_Method VARCHAR(255),
+  Date_Shipped VARCHAR(255),
+  Street_1 VARCHAR(255),
+  Street_2 VARCHAR(255),
+  Ship_City VARCHAR(255),
+  Ship_State VARCHAR(255),
+  Ship_Zipcode VARCHAR(255),
+  Ship_Country VARCHAR(255),
+  Currency VARCHAR(255),
+  Order_Value VARCHAR(255),
+  Coupon_Code VARCHAR(255),
+  Coupon_Details VARCHAR(255),
+  Discount_Amount INT,
+  Shipping_Discount INT,
+  Shipping INT,
+  Sales_Tax INT,
+  Order_Total VARCHAR(255),
+  Status VARCHAR(255),
+  Card_Processing_Fees INT,
+  Order_Net INT,
+  Adjusted_Order_Total INT,
+  Adjusted_Card_Processing_Fees INT,
+  Adjusted_Net_Order_Amount INT,
+  Buyer VARCHAR(255),
+  Order_Type VARCHAR(255),
+  Payment_Type VARCHAR(255),
+  InPerson_Discount VARCHAR(255),
+  InPerson_Location VARCHAR(255),
+  SKU VARCHAR(255)
+);
+INSERT INTO orders
+  (Sale_Date,Order_ID,Buyer_User_ID,Full_Name,First_Name,Last_Name,Number_of_Items,Payment_Method,Date_Shipped,Street_1,Street_2,Ship_City,Ship_State,Ship_Zipcode,Ship_Country,Currency,Order_Value,Coupon_Code,Coupon_Details,Discount_Amount,Shipping_Discount,Shipping,Sales_Tax,Order_Total,Status,Card_Processing_Fees,Order_Net,Adjusted_Order_Total,Adjusted_Card_Processing_Fees,Adjusted_Net_Order_Amount,Buyer,Order_Type,Payment_Type,InPerson_Discount,InPerson_Location,SKU)
+VALUES
+
+//
+//
+
 CREATE TABLE `payment_methods` (
   `payment_method_id` tinyint(4) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
