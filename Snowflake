@@ -69,6 +69,8 @@ LIMIT 10
 
 --------------------------------------------------------------------------------------------------------------------------------
 
+# Stock Volume Analysis #
+
 SELECT 
     LTRIM(MV.MATERIAL_NUMBER, '0') AS MATERIAL_NUM,
     MV.VALUATION_AREA AS PLANT,
