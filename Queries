@@ -12,8 +12,10 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%lamp%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
 
 //
 //
@@ -30,8 +32,10 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%quilt%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
 
 //
 //
@@ -41,15 +45,17 @@ SELECT
     COUNT(etsy4.id) AS Number_of_Book_Orders,
     SUM(etsy3.Number_of_Items) AS Number_of_Books_Sold,
     ROUND(SUM(etsy3.Order_Net), 2) AS Book_Total,
-	ROUND(ROUND(SUM(etsy3.Order_Net), 2)/COUNT(etsy4.id),2) AS Avg_Ticket
+    ROUND(ROUND(SUM(etsy3.Order_Net), 2)/COUNT(etsy4.id),2) AS Avg_Ticket
 FROM
     etsy4
         LEFT JOIN
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     etsy4.Item_Name LIKE '%book%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
 
 //
 //
@@ -65,8 +71,10 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%book%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
 
 //
 //
@@ -90,8 +98,10 @@ SELECT UPPER(Buyer) as Customer,
 	SUM(Number_of_Items) as Number_of_Items,
     ROUND(SUM(Order_Net),2) as  Order_Total
 FROM etsy3
-GROUP BY Buyer
-ORDER BY COUNT(ID) DESC;
+GROUP BY 
+    Buyer
+ORDER BY 
+    COUNT(ID) DESC;
 
 //
 //
@@ -132,8 +142,10 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%quilt%'
-GROUP BY etsy4.Sale_Year, Item_Category
-ORDER BY Sale_Year, Item_Category
+GROUP BY 
+    etsy4.Sale_Year, Item_Category
+ORDER BY 
+    Sale_Year, Item_Category
 
 //
 //
