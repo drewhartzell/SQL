@@ -12,8 +12,13 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%lamp%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
+
+//
+//
 
 SELECT 
     etsy4.Sale_Year,
@@ -27,23 +32,33 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%quilt%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
+
+//
+//
 
 SELECT 
     etsy4.Sale_Year,
     COUNT(etsy4.id) AS Number_of_Book_Orders,
     SUM(etsy3.Number_of_Items) AS Number_of_Books_Sold,
     ROUND(SUM(etsy3.Order_Net), 2) AS Book_Total,
-	ROUND(ROUND(SUM(etsy3.Order_Net), 2)/COUNT(etsy4.id),2) AS Avg_Ticket
+    ROUND(ROUND(SUM(etsy3.Order_Net), 2)/COUNT(etsy4.id),2) AS Avg_Ticket
 FROM
     etsy4
         LEFT JOIN
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     etsy4.Item_Name LIKE '%book%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
+
+//
+//
 
 SELECT 
     etsy4.Sale_Year,
@@ -56,8 +71,13 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%book%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
+GROUP BY 
+    etsy4.Sale_Year
+ORDER BY 
+    Sale_Year;
+
+//
+//
 
 SELECT 
     Item_Category,
@@ -76,14 +96,22 @@ FROM
 SELECT UPPER(Buyer) as Customer, 
 	COUNT(ID) as Number_of_Orders, 
 	SUM(Number_of_Items) as Number_of_Items,
-    round(sum(Order_Net),2) as  Order_Total
+    ROUND(SUM(Order_Net),2) as  Order_Total
 FROM etsy3
-group by Buyer
-ORDER BY COUNT(ID) DESC;
+GROUP BY 
+    Buyer
+ORDER BY 
+    COUNT(ID) DESC;
+
+//
+//
 
 SELECT Full_Name
-FRom etsy3
-where Order_ID = 1900047450;
+FROM etsy3
+WHERE Order_ID = 1900047450;
+
+//
+//
 
 SELECT 
     etsy4.Sale_Year,
@@ -99,6 +127,9 @@ WHERE
 GROUP BY etsy4.Sale_Year
 ORDER BY Sale_Year;
 
+//
+//
+
 SELECT 
     etsy4.Sale_Year,
     COUNT(etsy4.id) AS Number_of_Quilt_Orders,
@@ -111,7 +142,10 @@ FROM
     etsy3 ON etsy3.Order_ID = etsy4.Order_ID
 WHERE
     Item_Name LIKE '%quilt%'
-GROUP BY etsy4.Sale_Year
-ORDER BY Sale_Year;
-GROUP BY Item_Category
-ORDER BY Item_Category;
+GROUP BY 
+    etsy4.Sale_Year, Item_Category
+ORDER BY 
+    Sale_Year, Item_Category
+
+//
+//
